@@ -1,0 +1,26 @@
+{
+  "name": "festivalmusica",
+  "version": "1.0.0",
+  "description": "Proyecto con GULP, SASS Y HTML",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch src/scss:build/css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RogerPerva/FestivalMusica.git"
+  },
+  "keywords": [
+    "SASS",
+    "GULP"
+  ],
+  "author": "Rogelio P",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RogerPerva/FestivalMusica/issues"
+  },
+  "homepage": "https://github.com/RogerPerva/FestivalMusica#readme",
+  "devDependencies": {
+    "sass": "^1.57.1"
+  }
+}
