@@ -306,16 +306,3 @@ template {
 [hidden] {
   display: none;
 }
-
-h1 {
-  color: black;
-  text-transform: uppercase;
-}
-
-body {
-  background-color: white;
-}
-
-header {
-  background-color: black;
-}
