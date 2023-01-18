@@ -19,7 +19,7 @@
 function css(done){
     
     
-    src('src/scss/app.scss')    //Identificar el archivo de SASS. Saber donde esta
+    src('src/scss/**/*.scss')    //Identificar el archivo de SASS. Saber donde esta
         .pipe( sass())//Compilarlo.
         .pipe(dest("build/css")); //Almacenarla en el disco duro
     //PIPE es una accion que se realiza despues de otra, es decir, en cadena.
@@ -29,7 +29,7 @@ function css(done){
 }
 
 function dev(done){
-    watch("src/scss/app.scss",css);
+    watch("src/scss/**/*.scss",css);
     
     
     done();
