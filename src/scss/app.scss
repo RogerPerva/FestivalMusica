@@ -1,6 +1,7 @@
-$rojo: black;
+//forma anterior de escribir la sintaxis para enlazar este file con las variables.
+@import 'base/variables'; //importaremos el archivo de variables a este doc.
+@import 'contenido/contenido';
 
 body{
     background-color: $rojo;
 }
-
