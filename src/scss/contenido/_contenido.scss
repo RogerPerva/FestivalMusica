@@ -1,9 +1,9 @@
-
+@use 'base/variables' as v;
 
 h1{
-    color: $rojo;
+    color: v.$rojo;
 }
 
 body{
-    background-color: $rojo
+    background-color: v.$rojo
 }

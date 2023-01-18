@@ -1,7 +1,14 @@
 //forma anterior de escribir la sintaxis para enlazar este file con las variables.
-@import 'base/variables'; //importaremos el archivo de variables a este doc.
-@import 'contenido/contenido';
+    // @import 'base/variables'; //importaremos el archivo de variables a este doc.
+    // @import 'contenido/contenido';
 
-body{
-    background-color: $rojo;
-}
+    // body{
+    //     background-color: $rojo;
+    // }
+
+
+//-------- Nueva sintaxis para incluir codigo de otros archivos.
+
+//en lugar de @import utilizaremos USE.
+@use 'base';
+@use 'contenido';
