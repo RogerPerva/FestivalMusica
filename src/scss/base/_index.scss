@@ -1,2 +1,4 @@
 @forward 'variables';
 @forward 'normalize.scss'; //Se puede incluir una hoja de estilos sin ningun problema dentro de scss.
+@forward 'globales'; 
+@forward 'mixins'; 

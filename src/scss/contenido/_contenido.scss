@@ -1,14 +1,5 @@
 @use 'base/variables' as v;
 
 h1{
-    color: v.$rojo;
     text-transform: uppercase;
-}
-
-body{
-    background-color: v.$fondo;
-}
-
-header{
-    background-color: v.$rojo;
 }

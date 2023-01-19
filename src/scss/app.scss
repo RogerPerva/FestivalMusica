@@ -1,4 +1,4 @@
-////-------- Este es el archivo principal que une todo.
+////--------!!!!!!!!!!! Este es el archivo principal que une todo. !!!!!!!!!!!-----
 
 //forma anterior de escribir la sintaxis para enlazar este file con las variables.
     // @import 'base/variables'; //importaremos el archivo de variables a este doc.
@@ -11,6 +11,8 @@
 
 //-------- Nueva sintaxis para incluir codigo de otros archivos.
 
+
 //en lugar de @import utilizaremos USE.
 @use 'base';
 @use 'contenido';
+@use 'layout';
