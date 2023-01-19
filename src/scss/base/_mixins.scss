@@ -1,9 +1,15 @@
 //Los mixins nos ayuda a reutilizar estilos y poderlo utilizar en cualquier lado sin necesidad de transcribirlo todo completamente.
 //Por ejemplo podemos crear varios mixins para botones ya que los botones es algo que se utiliza demasiado
-@mixin heading{ // todo aquello que inicia con arroba es propio de SASS y se llaman directivas
-    text-transform: uppercase;
-    font-size: 2.4rem;
-    color: black;
-    letter-spacing: normal;
-} 
+@use 'base/variables' as v;
+// todo aquello que inicia con arroba es propio de SASS y se llaman directivas
+    // @mixin heading($color: black, $border-radius:false){ 
+    //     text-transform: uppercase;
+    //     font-size: 2.4rem;
+    //     color: $color;
+    //     letter-spacing: 1px;
+
+    //     @if $border-radius{
+    //         border-radius: 1rem;
+    //     }
+    // } 
 

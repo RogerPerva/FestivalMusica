@@ -21,11 +21,11 @@
     }
 }
 
-.prueba{
-    //para poder utilizar los mixins hacemos uso de otra directiva llamada @include
-    @include m.heading;
+            // .prueba{
+            //     //para poder utilizar los mixins hacemos uso de otra directiva llamada @include
+            //         // @include m.heading(v.$amarillo, true);
 
-}
-.texto{
-    @include m.heading;
-}
+            // }
+            // .texto{
+            //     @include m.heading;
+            // }
