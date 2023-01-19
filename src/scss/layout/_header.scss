@@ -14,8 +14,9 @@
 .navegacion-principal{
     background-color: red;
     @include m.telefono{
-        background-color: blue;
+        background-color:aqua;
     }
+    
     @include m.tablet{
         background-color: yellow;
     }

@@ -370,7 +370,7 @@ h1 {
 }
 @media (min-width: 480px) {
   .navegacion-principal {
-    background-color: blue;
+    background-color: aqua;
   }
 }
 @media (min-width: 768px) {
