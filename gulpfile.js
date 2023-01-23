@@ -12,31 +12,43 @@
             //src sirve para identificar el archivo y dest sirve para guardarlo.
    
 ///!!!!!!!!!!!!!!!!!!! Para ejecutar los archivos de gulp, utilizamos 'npx gulp (nombre de tarea)'
+const {src, dest, watch, series, parallel} = require('gulp');
 
-    const {src, dest, watch} = require("gulp");
+//Dependencias de CSS
     const sass = require ("gulp-sass")(require("sass"));
     const plumber = require("gulp-plumber");
 
-function css(done){
-    
-    
+//Estas siguientes dependencias son de imagenes
+    const webp = require('gulp-webp');
+
+    function css(done){
     src('src/scss/**/*.scss')    //Identificar el archivo de SASS. Saber donde esta
         .pipe(plumber()) //lo que hace plumber es que en caso de que haya errores no tenga problemas y detenga el workflow
         .pipe( sass())//Compilarlo.
         .pipe(dest("build/css")); //Almacenarla en el disco duro
-        
     //PIPE es una accion que se realiza despues de otra, es decir, en cadena.
     //Se pueden tener multiples pipes.
-    
     done(); //callback que avisa cuando llegamos al final de la ejecucion.
 }
 
+function versionWebp(done){
+    const opciones={
+        quality: 50
+    };
+    
+    src('src/img/**/*.{png,jpg}')//Seleccionamos todas las imagenes
+    .pipe(webp(opciones)) //las convertimos 
+    .pipe(dest('build/img')); //y las almacenamos
+    done();
+}
+
 function dev(done){
-    watch("src/scss/**/*.scss",css);
+    watch("src/scss/**/*.scss",css); //esta observando por cambios en todos los archivos scss
     
     
     done();
 }
 
-exports.dev=dev;
+exports.versionWebp = versionWebp; 
 exports.css=css;
+exports.dev= parallel(versionWebp, dev); //PARALLEL ejecuta las dos tareas al mismo tiempo, pero debemos importarlo en el inicio del gulpfile.js
