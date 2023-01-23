@@ -4,6 +4,9 @@
 
 .video{
     position: relative;
+    max-height: 70rem;
+    min-height: 50rem;
+    overflow: hidden;
 
     .overlay{
         position: absolute;
@@ -11,10 +14,40 @@
         background: linear-gradient(270deg, rgba(126,2,195,0.5) 0%, rgba(255,0,110,0.3) 100%);;
         height: 100%;
         width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     video{
-        width: 100%;
+        @include m.desktop{
+            width: 100%;
+        }
+
+        width: auto;
         display:block; //Para que ocupe perfectamente el lugar al final del borde del video.
+        
+    
+    }
+}
+
+.contenido-video{
+    z-index: 10; //esta es la posicion en la que estara el contenido-video, es decir, estara hasta al frente y detras se muestra el video, basra con poner un numero positivo para que este se superponga.
+
+    h2{
+        color: v.$blanco;
+        font-size: 7rem;
+        margin: 0;
+
+    }
+
+    p{
+        background-color: v.$rosa;
+        display: inline-block; //solamente toma el espacio que requiere
+        padding: 1rem 2rem;
+        color: v.$blanco;
+        font-size: 700;
+        font-weight: 2.4rem; //700 = bold
+        margin: 0;
     }
 }
