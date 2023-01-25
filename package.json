@@ -23,6 +23,7 @@
   "homepage": "https://github.com/RogerPerva/FestivalMusica#readme",
   "devDependencies": {
     "gulp": "^4.0.2",
+    "gulp-imagemin": "7.1",
     "gulp-plumber": "^1.2.1",
     "gulp-sass": "^5.1.0",
     "gulp-webp": "^4.0.1",
