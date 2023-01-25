@@ -22,7 +22,10 @@
   },
   "homepage": "https://github.com/RogerPerva/FestivalMusica#readme",
   "devDependencies": {
+    "cache": "^3.0.0",
     "gulp": "^4.0.2",
+    "gulp-avif": "^1.1.1",
+    "gulp-cache": "^1.1.3",
     "gulp-imagemin": "7.1",
     "gulp-plumber": "^1.2.1",
     "gulp-sass": "^5.1.0",

@@ -18,8 +18,13 @@ const {src, dest, watch, series, parallel} = require('gulp');
     const sass = require ("gulp-sass")(require("sass"));
     const plumber = require("gulp-plumber");
 
+
+//Imagenes
 //Estas siguientes dependencias son de imagenes
+    const imagemin= require('gulp-imagemin');
+    const cache = require('gulp-cache');
     const webp = require('gulp-webp');
+    const avif=require('gulp-avif');
 
     function css(done){
     src('src/scss/**/*.scss')    //Identificar el archivo de SASS. Saber donde esta
@@ -30,14 +35,33 @@ const {src, dest, watch, series, parallel} = require('gulp');
     //Se pueden tener multiples pipes.
     done(); //callback que avisa cuando llegamos al final de la ejecucion.
 }
-
-function versionWebp(done){
+    function imagenes(done){
+    const opciones={
+        optimizationLevel: 3 //Aligerar en una optimizacion de nivel 2, podemos encontrar mas opciones en GitHub.
+    };
+    
+    src('src/img/**/*.{png,jpg}')//Seleccionamos todas las imagenes
+    .pipe(cache(imagemin(opciones))) //las convertimos 
+    .pipe(dest('build/img')); //y las almacenamos
+    done();
+}
+    function versionWebp(done){
     const opciones={
         quality: 50
     };
     
     src('src/img/**/*.{png,jpg}')//Seleccionamos todas las imagenes
     .pipe(webp(opciones)) //las convertimos 
+    .pipe(dest('build/img')); //y las almacenamos
+    done();
+}
+    function versionAvif(done){
+    const opciones={
+        quality: 50
+    };
+    
+    src('src/img/**/*.{png,jpg}')//Seleccionamos todas las imagenes
+    .pipe(avif(opciones)) //las convertimos 
     .pipe(dest('build/img')); //y las almacenamos
     done();
 }
@@ -50,5 +74,7 @@ function dev(done){
 }
 
 exports.versionWebp = versionWebp; 
+exports.versionAvif = versionAvif; 
 exports.css=css;
-exports.dev= parallel(versionWebp, dev); //PARALLEL ejecuta las dos tareas al mismo tiempo, pero debemos importarlo en el inicio del gulpfile.js
+exports.imagenes = imagenes;
+exports.dev= parallel(versionWebp, versionAvif, imagenes, dev); //PARALLEL ejecuta las dos tareas al mismo tiempo, pero debemos importarlo en el inicio del gulpfile.js
