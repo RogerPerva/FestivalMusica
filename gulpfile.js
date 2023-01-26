@@ -66,9 +66,15 @@ const {src, dest, watch, series, parallel} = require('gulp');
     done();
 }
 
-function dev(done){
+    function javascript(done){
+        src('src/js/**/*.js')
+            .pipe(dest('build/js'));
+
+            done();
+    }
+    function dev(done){
     watch("src/scss/**/*.scss",css); //esta observando por cambios en todos los archivos scss
-    
+    watch("src/js/**/*.js",javascript); //queda escuchadno por los cambios en js
     
     done();
 }
@@ -76,5 +82,6 @@ function dev(done){
 exports.versionWebp = versionWebp; 
 exports.versionAvif = versionAvif; 
 exports.css=css;
+exports.js=javascript;
 exports.imagenes = imagenes;
-exports.dev= parallel(versionWebp, versionAvif, imagenes, dev); //PARALLEL ejecuta las dos tareas al mismo tiempo, pero debemos importarlo en el inicio del gulpfile.js
+exports.dev= parallel(versionWebp, versionAvif, imagenes, javascript, dev); //PARALLEL ejecuta las dos tareas al mismo tiempo, pero debemos importarlo en el inicio del gulpfile.js
