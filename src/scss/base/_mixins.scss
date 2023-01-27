@@ -44,7 +44,7 @@
     @mixin grid($columnas,$espaciado){
         display: grid;
         grid-template-columns: repeat($columnas,1fr);
-        gap:$espaciado;
+        gap:$espaciado; //gap hace un espaciado hacia todos los lados, y column-gap solo lo hace entre columnas.
     }
 
     @mixin resetear-lista{
