@@ -27,6 +27,9 @@ const {src, dest, watch, series, parallel} = require('gulp');
     const cache = require('gulp-cache');
     const webp = require('gulp-webp');
     const avif=require('gulp-avif');
+//Javascript
+    const terser =require('gulp-terser-js');
+
 
     function css(done){
     src('src/scss/**/*.scss')    //Identificar el archivo de SASS. Saber donde esta
@@ -73,6 +76,9 @@ const {src, dest, watch, series, parallel} = require('gulp');
 
     function javascript(done){
         src('src/js/**/*.js')
+            .pipe( sourcemaps.init())
+            .pipe( terser())
+            .pipe( sourcemaps.write('.'))
             .pipe(dest('build/js'));
 
             done();
