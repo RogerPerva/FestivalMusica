@@ -4,6 +4,20 @@
 
     function iniciarApp(){
         crearGaleria();
+        scrollNav();
+    }
+
+    function scrollNav(){
+        const enlaces = document.querySelectorAll('navegacion-principal a');
+        enlaces.forEach(enlace=>{
+            enlace.addEventListener('click',function(e){
+                e.preventDefault(); //eliminamos el comportamiento por default y mas adelante le agregamos un nuevo comportamiento.
+                const seccionScroll=e.target.attributes.href.value;
+                const seccion = document.querySelector(seccionScroll);
+                seccion.scrollIntoView({behavior:"smooth"});
+                console.log(e.target.attributes.href.value);
+            });
+        });
     }
 
     function crearGaleria(){
