@@ -20,7 +20,7 @@ const {src, dest, watch, series, parallel} = require('gulp');
     const autoprefixer=require ('autoprefixer');//Va a asegurarse en el navegador que definamos
     const cssnano = require('cssnano');         //comprime nuestro codigo css
     const postcss = require ('gulp-postcss');  //postcss hace algunas tranforamaciones 
-
+    const sourcemaps = require('gulp-sourcemaps'); //Esta funcion nos ayuda a buscar el codigo css despues de haber sido comprimido
 //Imagenes
 //Estas siguientes dependencias son de imagenes
     const imagemin= require('gulp-imagemin');
@@ -30,9 +30,11 @@ const {src, dest, watch, series, parallel} = require('gulp');
 
     function css(done){
     src('src/scss/**/*.scss')    //Identificar el archivo de SASS. Saber donde esta
+        .pipe(sourcemaps.init()) //Inicialiar el sourcemap y va a ir guardando la referencia.
         .pipe(plumber()) //lo que hace plumber es que en caso de que haya errores no tenga problemas y detenga el workflow
         .pipe( sass())//Compilarlo.
-        .pipe( postcss([autoprefixer(),cssnano()]))
+        .pipe( postcss([autoprefixer(),cssnano()])) //Esto comprime el codigo de css.
+        .pipe(sourcemaps.write('.'))//le decimos donde se va a guardar, en este caso solo ponemo un punto para que sea la misma ubicacion donde se va aguardar de css
         .pipe(dest("build/css")); //Almacenarla en el disco duro
     //PIPE es una accion que se realiza despues de otra, es decir, en cadena.
     //Se pueden tener multiples pipes.
