@@ -5,6 +5,26 @@
     function iniciarApp(){
         crearGaleria();
         scrollNav();
+        navegacionfija();
+    }
+
+    function navegacionfija(){
+        const barra = document.querySelector('.header');
+        const sobreFestival = document.querySelector('.sobre-festival');
+        const body=document.querySelector('body');
+
+            window.addEventListener('scroll', function(){
+               
+                if(sobreFestival.getBoundingClientRect().top<0){ // aqui hacemos referencia a la parte superior del elemento, en cuando la parte superior del elemento toque la pantalla, se va a ejecutar.
+                    barra.classList.add('fijo'); //agregamos la clase de fijo y la configuramos el el scss de header
+                    body.classList.add('body-scroll');
+                    console.log("pasamos elemento");
+                }else{
+                    barra.classList.remove('fijo'); //removemos la clase.
+                    body.classList.add('body-scroll');
+                    console.log("aun no");
+                }
+            });
     }
 
     function scrollNav(){
